@@ -23,10 +23,6 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def show
-    @recipe = Recipe.find(params[:id])
-  end
-
   def new
 
   end
@@ -38,6 +34,25 @@ class RecipesController < ApplicationController
                         ingredients: params[:ingredients],
                         directions: params[:directions]
                         )
+    @recipe.save
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+
+    @recipe.title = params[:title]
+    @recipe.chef = params[:chef]
+    @recipe.ingredients = params[:ingredients]
+    @recipe.directions = params[:directions]
+
     @recipe.save
   end
 
