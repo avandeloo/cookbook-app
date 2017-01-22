@@ -48,10 +48,16 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
 
-    @recipe.title = params[:title]
-    @recipe.chef = params[:chef]
-    @recipe.ingredients = params[:ingredients]
-    @recipe.directions = params[:directions]
+    @recipe.assign_attributes(
+                              title: params[:title],
+                              chef: params[:chef],
+                              ingredients: params[:ingredients],
+                              directions: params[:directions]
+                              )
+    # @recipe.title = params[:title]
+    # @recipe.chef = params[:chef]
+    # @recipe.ingredients = params[:ingredients]
+    # @recipe.directions = params[:directions]
 
     @recipe.save
   end

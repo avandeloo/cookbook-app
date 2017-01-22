@@ -5,7 +5,5 @@
 
 <a href="/recipes">Home</a>
 <div></div>
-<a class="btn btn-info" href="/recipes/<%= @recipe.id %>/edit">Edit Recipe</a>
-<%= form_tag "/recipes/#{@recipe.id}", method: :delete do %>
-  <input class="btn btn-danger" type="submit" value="delete recipe">
-<% end %>
+<%= link_to "Edit Recipe", "/recipes/#{@recipe.id}/edit", class: "btn btn-info" %>
+<%= link_to "Delete", "/recipes/#{@recipe.id}", class: "btn btn-danger", method: :delete %>
