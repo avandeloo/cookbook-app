@@ -27,4 +27,18 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def new
+
+  end
+
+  def create
+    @recipe = Recipe.new(
+                        title: params[:title],
+                        chef: params[:chef],
+                        ingredients: params[:ingredients],
+                        directions: params[:directions]
+                        )
+    @recipe.save
+  end
+
 end
