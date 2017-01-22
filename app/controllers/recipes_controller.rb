@@ -56,4 +56,9 @@ class RecipesController < ApplicationController
     @recipe.save
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+  end
+
 end
