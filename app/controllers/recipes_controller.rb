@@ -1,24 +1,5 @@
 class RecipesController < ApplicationController
-  # def one_recipe
-  #   @recipe = Recipe.last
-  # end
 
-  # def all_recipes
-  #   @recipes = Recipe.all
-  # end
-
-  # def recipe_form
-  # end
-
-  # def recipe_success
-  #   @recipe = Recipe.new(
-  #                         title: params["title"],
-  #                         chef: params["chef"],
-  #                         ingredients: params["ingredients"],
-  #                         directions: params["directions"]
-  #                       )
-  #   @recipe.save
-  # end
   def index
     @recipes = Recipe.all
   end
@@ -28,13 +9,19 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(
+    recipe = Recipe.new(
                         title: params[:title],
                         chef: params[:chef],
                         ingredients: params[:ingredients],
-                        directions: params[:directions]
+                        directions: params[:directions],
+                        prep_time: params[:prep_time],
+                        image: params[:image]
+
                         )
-    @recipe.save
+    recipe.save
+
+    flash[:success] = "Recipe #{recipe.title} Created Successfully."
+    redirect_to "/recipes/#{recipe.id}"
   end
 
   def show
@@ -46,25 +33,29 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    recipe = Recipe.find(params[:id])
 
-    @recipe.assign_attributes(
+    recipe.assign_attributes(
                               title: params[:title],
                               chef: params[:chef],
                               ingredients: params[:ingredients],
-                              directions: params[:directions]
-                              )
-    # @recipe.title = params[:title]
-    # @recipe.chef = params[:chef]
-    # @recipe.ingredients = params[:ingredients]
-    # @recipe.directions = params[:directions]
+                              directions: params[:directions],
+                              prep_time: params[:prep_time],
+                              image: params[:image]
+                            )
 
-    @recipe.save
+    flash[:success] = "Recipe #{recipe.title} Updated Successfully."
+    redirect_to "/recipes/#{recipe.id}"
+
+    recipe.save
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
-    @recipe.destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy
+
+    flash[:warning] = "Recipe #{recipe.title} Deleted Successfully."
+    redirect_to "/recipes"
   end
 
 end
