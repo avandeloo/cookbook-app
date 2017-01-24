@@ -4,7 +4,7 @@
     <% recipe_slice.each do |recipe| %>
     <div class="col-md-4">
       <div class="well">
-        <h2>Title: <a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
+        <h2>Title: <a href="/recipes/<%= recipe.id %>" class = link><%= recipe.title %></a></h2>
         <h4>Chef: <%= recipe.chef %></h4>
         <img src="<%= recipe.image %>">
         <h3>Ingredients: <%= recipe.ingredients %></h3>

@@ -1,3 +1,4 @@
+<div class= "well">
 <h2>Title: <%= @recipe.title %></h2>
 <h5>Updated On: <%= @recipe.friendly_updated_at %></h5>
 <h5>Prep Time: <%= @recipe.friendly_prep_time %></h5>
@@ -15,7 +16,7 @@
     <li><%= direction %></li>
   <% end %>
 </ol> 
-
-
+<img src="<%= @recipe.image %>">
+</div>
 <%= link_to "Edit Recipe", "/recipes/#{@recipe.id}/edit", class: "btn btn-info" %>
 <%= link_to "Delete", "/recipes/#{@recipe.id}", class: "btn btn-danger", method: :delete %>
