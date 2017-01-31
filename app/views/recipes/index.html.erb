@@ -5,6 +5,7 @@
     <div class="col-md-4">
       <div class="well">
         <h2>Title: <a href="/recipes/<%= recipe.id %>" class = link><%= recipe.title %></a></h2>
+        <h5>Prep Time: <%= recipe.friendly_prep_time %></h5>
         <h4>Chef: <%= recipe.chef %></h4>
         <img src="<%= recipe.image %>">
         <h3>Ingredients: <%= recipe.ingredients %></h3>
